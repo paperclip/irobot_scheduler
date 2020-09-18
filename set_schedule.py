@@ -1,9 +1,15 @@
 #!/bin/env python
 
+import os
 import serial
+import sys
 import time
 
-PORT="/dev/ttyUSB3"
+if len(sys.argv) > 1:
+    PORT = sys.argv[1]
+else:
+    PORT=os.environ.get("PORT", "/dev/ttyUSB0")
+
 BAUD_RATE=115200
 ser = serial.Serial(PORT, baudrate=BAUD_RATE, timeout=0.5)
 
@@ -36,8 +42,8 @@ minute = now.tm_min
 
 ser.write(commands.set_day_time(day, hour, minute))
 
-hour = 21
-minute = 59
+hour = 9
+minute = 0
 
 sun_hour = hour
 sun_min = minute
@@ -72,3 +78,8 @@ ser.write(commands.set_schedule(
 )
 
 ser.write(commands.set_mode_passive())
+
+# read oi mode
+ser.write(request_sensor_data(35))
+ret = unsigned_byte_response(ser.read(RESPONSE_SIZES[35]))
+print("OI mode:",ret)
