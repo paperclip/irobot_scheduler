@@ -1,0 +1,2 @@
+pyserial
+git+https://github.com/danimaciasperea/irobot.git@0ce8d86b07335b9d2def33879c6772185e327879
