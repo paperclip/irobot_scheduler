@@ -81,5 +81,7 @@ ser.write(commands.set_mode_passive())
 
 # read oi mode
 ser.write(request_sensor_data(35))
-ret = unsigned_byte_response(ser.read(RESPONSE_SIZES[35]))
+response = ser.read(RESPONSE_SIZES[35])
+print(repr(response))
+ret = unsigned_byte_response(response)
 print("OI mode:",ret)
