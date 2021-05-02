@@ -42,6 +42,8 @@ minute = now.tm_min
 
 ser.write(commands.set_day_time(day, hour, minute))
 
+# 9:30 in summer, and 8:30 in winter, if I've got this right
+# Probably could make this automatic based on DST settting in now
 hour = 9
 minute = 30
 
