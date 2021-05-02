@@ -1,9 +1,15 @@
 #!/bin/env python
 
 import serial
+import sys
 import time
 
-PORT="/dev/ttyUSB3"
+
+if len(sys.argv) > 1:
+    PORT = sys.argv[1]
+else:
+    PORT="/dev/ttyUSB3"
+
 BAUD_RATE=115200
 ser = serial.Serial(PORT, baudrate=BAUD_RATE, timeout=0.5)
 
