@@ -8,10 +8,7 @@ import time
 if len(sys.argv) > 1:
     PORT = sys.argv[1]
 else:
-    PORT=os.environ.get("PORT", "/dev/ttyUSB0")
-
-BAUD_RATE=115200
-ser = serial.Serial(PORT, baudrate=BAUD_RATE, timeout=0.5)
+    PORT=os.environ.get("PORT", "COM1") # /dev/ttyUSB0
 
 import irobot.openinterface.commands 
 from irobot.openinterface import commands
@@ -19,6 +16,9 @@ from irobot.openinterface.commands import set_mode_full, request_sensor_data # o
 from irobot.openinterface.constants import RESPONSE_SIZES, DAYS
 from irobot.openinterface.response_parsers import unsigned_byte_response
 # open a serial connection
+BAUD_RATE=115200
+ser = serial.Serial(PORT, baudrate=BAUD_RATE, timeout=0.5)
+
 # assumed to be serial here
 # change mode
 ser.write(commands.start())
