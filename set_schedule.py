@@ -43,7 +43,7 @@ minute = now.tm_min
 ser.write(commands.set_day_time(day, hour, minute))
 
 hour = 9
-minute = 0
+minute = 30
 
 sun_hour = hour
 sun_min = minute
