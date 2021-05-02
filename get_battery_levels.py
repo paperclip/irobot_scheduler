@@ -29,7 +29,8 @@ def request_data(field):
 
 data = request_data(3)
 assert data is not None
-print([ "%x"%ord(c) for c in data ])
+print(repr(data))
+print([ "%x"%c for c in data ])
 battery_status = SensorGroup3(data)
 print("charging_state:", battery_status.charging_state)
 print("voltage:", battery_status.voltage)
