@@ -7,7 +7,7 @@ import time
 if len(sys.argv) > 1:
     PORT = sys.argv[1]
 else:
-    PORT="/dev/ttyUSB0"
+    PORT="COM6"
 
 BAUD_RATE=115200
 ser = serial.Serial(PORT, baudrate=BAUD_RATE, timeout=0.5)

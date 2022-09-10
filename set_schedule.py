@@ -8,7 +8,7 @@ import time
 if len(sys.argv) > 1:
     PORT = sys.argv[1]
 else:
-    PORT=os.environ.get("PORT", "COM1") # /dev/ttyUSB0
+    PORT=os.environ.get("PORT", "COM6") # /dev/ttyUSB0
 
 import irobot.openinterface.commands 
 from irobot.openinterface import commands
@@ -42,10 +42,8 @@ minute = now.tm_min
 
 ser.write(commands.set_day_time(day, hour, minute))
 
-# 9:30 in summer, and 8:30 in winter, if I've got this right
-# Probably could make this automatic based on DST settting in now
 hour = 9
-minute = 30
+minute = 0
 
 sun_hour = hour
 sun_min = minute
